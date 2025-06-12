@@ -1,0 +1,9 @@
+# Generated files
+htpasswd
+.env.example
+
+# macOS
+.DS_Store
+
+# Logs
+*.log 

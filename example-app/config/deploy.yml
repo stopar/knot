@@ -1,0 +1,50 @@
+service: my-web-app
+image: my-web-app
+
+# Kamal 2 timeout settings
+deploy_timeout: 30
+drain_timeout: 30
+readiness_delay: 5
+
+# This app is deployed to a DIFFERENT VPS than the registry
+servers:
+  web:
+    - APP_VPS_IP_ADDRESS    # Different VPS for running the app
+
+# But it uses the REGISTRY VPS for building
+builder:
+  arch: amd64
+  remote: ssh://root@REGISTRY_VPS_IP_ADDRESS    # Same VPS as your registry
+
+# And pulls images from your self-hosted registry
+registry:
+  server: registry.yourdomain.com
+  username: admin
+  password:
+    - KNOT_REGISTRY_PASSWORD
+
+proxy:
+  ssl: true
+  host: app.yourdomain.com    # Domain pointing to APP_VPS_IP_ADDRESS
+  app_port: 3000
+  healthcheck:
+    path: /health
+    interval: 3
+    timeout: 10
+
+env:
+  clear:
+    NODE_ENV: production
+    # Add your app-specific environment variables here
+
+ssh:
+  user: root
+
+# Optional: Resources and scaling
+# resources:
+#   reservations:
+#     cpus: "0.5"
+#     memory: "512M"
+#   limits:
+#     cpus: "1"
+#     memory: "1G" 

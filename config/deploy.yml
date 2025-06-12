@@ -1,0 +1,51 @@
+service: registry
+image: registry:2
+
+# Kamal 2 timeout settings
+deploy_timeout: 30
+drain_timeout: 30
+readiness_delay: 5
+
+# Temporary registry credentials for bootstrap (deployto.dev hack)
+# deployto.dev/v2/ returns HTTP 200, which satisfies Kamal's registry check
+registry:
+  server: deployto.dev
+  username: bootstrap
+  password: bootstrap
+
+servers:
+  web:
+    - VPS_IP_ADDRESS
+
+builder:
+  arch: amd64
+
+aliases:
+  add-registry-to-proxy: |
+    server exec docker exec kamal-proxy kamal-proxy deploy registry 
+    --target "registry-registry:5000"
+    --host "registry.yourdomain.com" 
+    --tls 
+    --deploy-timeout "60s" 
+    --drain-timeout "30s" 
+    --health-check-path "/" 
+    --buffer-requests 
+    --buffer-responses
+
+accessories:
+  registry:
+    image: registry:2
+    host: VPS_IP_ADDRESS
+    port: "127.0.0.1:5000:5000"
+    env:
+      clear:
+        REGISTRY_AUTH: htpasswd
+        REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+        REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    files:
+      - ./htpasswd:/auth/htpasswd
+    directories:
+      - registry_data:/var/lib/registry
+
+ssh:
+  user: root
