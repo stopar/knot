@@ -13,7 +13,7 @@ Deploy your own private Docker registry and build server in 3 commands. No Docke
 - **Mac-Friendly**: Perfect for M1/M2/M3 Macs with ARM64 → AMD64 builds
 - **Architecture Freedom**: Build AMD64 images from any machine
 - **Kamal 2 Ready**: Works perfectly with Kamal 2 out of the box
-- **Secure**: HTTPS + authentication included
+- **Secure**: Automatic HTTPS with Let's Encrypt SSL certificates + password authentication
 
 ## Perfect for Mac Users
 
@@ -109,11 +109,13 @@ This project was inspired by the excellent work in [Jason Nochlin's blog post](h
 ## That's it
 
 Your VPS now runs:
-- ✅ Docker Registry v2 with HTTPS via Let's Encrypt
+- ✅ Docker Registry v2 with **automatic HTTPS via Let's Encrypt**
 - ✅ Remote builder for Kamal 2 deployments
-- ✅ Password authentication  
+- ✅ Password authentication + SSL encryption
 - ✅ Works with any Kamal 2 deployment 
 - ✅ Zero external dependencies
+
+**SSL Certificate**: Automatically provisions and renews Let's Encrypt certificates for secure HTTPS access to your registry.
 
 ## License
 
