@@ -34,6 +34,12 @@ cd knot
 ./knot test    # Verify it works
 ```
 
+During setup, you'll be asked 3 questions:
+
+1. **VPS IP address:** Your server's IP address
+2. **Registry domain:** e.g., `registry.yourdomain.com`
+3. **SSH user:** [root] (or ubuntu for AWS/GCP)
+
 ## 📹 Video Walkthrough
 
 Watch Knot in action - from setup to deployment in just a few minutes:
