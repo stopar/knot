@@ -34,6 +34,14 @@ cd knot
 ./knot test    # Verify it works
 ```
 
+## 📹 Video Walkthrough
+
+Watch Knot in action - from setup to deployment in just a few minutes:
+
+[![Knot Walkthrough](https://img.youtube.com/vi/pNO0p8X1udc/0.jpg)](https://www.youtube.com/watch?v=pNO0p8X1udc)
+
+**[▶️ Watch on YouTube](https://www.youtube.com/watch?v=pNO0p8X1udc)**
+
 ## What you need
 
 - **VPS** with SSH access (1GB RAM minimum)
