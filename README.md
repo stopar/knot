@@ -99,4 +99,8 @@ Your VPS now runs:
 - ✅ Remote builder for Kamal 2 deployments
 - ✅ Password authentication  
 - ✅ Works with any Kamal 2 deployment 
-- ✅ Zero external dependencies 
+- ✅ Zero external dependencies
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file for details. 
