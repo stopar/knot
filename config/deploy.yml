@@ -15,16 +15,17 @@ registry:
 
 servers:
   web:
-    - VPS_IP_ADDRESS
+    - 138.199.158.111
 
 builder:
-  arch: amd64
+  # arch: amd64
+  arch: arm64
 
 aliases:
   add-registry-to-proxy: |
     server exec docker exec kamal-proxy kamal-proxy deploy registry 
     --target "registry-registry:5000"
-    --host "registry.yourdomain.com" 
+    --host "hub.geligalabs.com" 
     --tls 
     --deploy-timeout "60s" 
     --drain-timeout "30s" 
@@ -35,7 +36,7 @@ aliases:
 accessories:
   registry:
     image: registry:2
-    host: VPS_IP_ADDRESS
+    host: 138.199.158.111
     port: "127.0.0.1:5000:5000"
     env:
       clear:
