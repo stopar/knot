@@ -7,3 +7,6 @@ htpasswd
 
 # Logs
 *.log 
+
+# deploy
+config/deploy.yml
