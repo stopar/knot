@@ -381,7 +381,7 @@ run_test() {
     exit 1
   fi
 
-  REGISTRY_DOMAIN=$(grep -o '"[^"]*"' config/deploy.yml | grep -E '(hub\.|registry\.)' | sed 's/"//g' | head -1)
+  REGISTRY_DOMAIN=$(grep -A 1 -- '--host' config/deploy.yml | grep -o '"[^"]*"' | sed 's/"//g' | head -1)
 
   if [[ -z "$REGISTRY_DOMAIN" ]]; then
     echo -e "${RED}❌ Could not find registry domain${NC}"
@@ -450,4 +450,3 @@ case "${1:-help}" in
   exit 1
   ;;
 esac
-
